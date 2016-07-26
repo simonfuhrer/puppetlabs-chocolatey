@@ -78,6 +78,10 @@ Puppet::Type.newtype(:chocolateysource) do
       the property at all."
 
     defaultto ''
+    def insync?(current)
+      return current == :absent if should.empty?
+      super(current)
+    end
   end
 
   newparam(:password) do
